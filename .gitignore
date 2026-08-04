@@ -1,0 +1,22 @@
+# Excel temporary/lock files
+~$*.xlsx
+~$*.xlsm
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Local/private data exports
+*.csv
+*.json
+.env
+
+# Generated files
+outputs/
