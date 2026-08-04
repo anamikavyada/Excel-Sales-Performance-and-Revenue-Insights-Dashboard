@@ -1,174 +1,183 @@
-# Retail Customer Analytics Dashboard
+# Retail Customer Analytics Dashboard | Excel
 
----
+> **Interactive Excel dashboard for customer demographics, data quality, geographic distribution, and customer segmentation insights.**
 
-## 📋 Project Overview  
-This project presents a comprehensive Retail Customer Analytics Dashboard built using Excel to analyze customer demographics, purchasing patterns, and regional distribution. The dashboard provides actionable insights for retail business strategy and customer segmentation.
+[![Excel](https://img.shields.io/badge/Microsoft%20Excel-Dashboard-217346?logo=microsoftexcel)](https://www.microsoft.com/microsoft-365/excel)
+[![Analytics](https://img.shields.io/badge/Focus-Customer%20Analytics-blue)](#business-problem)
+[![Dataset](https://img.shields.io/badge/Dataset-336%20customers-orange)](#dataset)
 
----
+## Business Problem
 
-## 🎯 Problem Statement  
-Retail businesses often struggle with:  
-- Understanding customer demographics across different regions  
-- Identifying age and gender distribution for targeted marketing  
-- Managing incomplete customer data effectively  
-- Visualizing geographic customer concentration for expansion planning  
-- Segmenting customers for personalized marketing campaigns  
+Retail teams need a simple way to understand **who their customers are, where they are located, and how demographic patterns can support targeting decisions**.
 
-This dashboard addresses these challenges by providing clear visualizations and data-driven insights into customer characteristics and distribution patterns.
+This project builds an Excel-based analytical dashboard that converts a raw customer dataset into an interactive management view covering:
 
----
+- Customer demographics
+- Age-group distribution
+- Gender mix
+- City-level customer concentration
+- Data-quality and missing-value treatment
+- Demographic intersections for customer targeting
 
-## 📊 Dataset Information  
+## What I Built
 
-### Data Sources  
-The analysis uses a synthetic retail dataset with two main components:  
+```text
+Raw Customer Data
+       |
+       v
+Data Quality Checks
+       |
+       +--> Missing-age identification
+       +--> Gender-level average calculation
+       +--> Age imputation
+       +--> Age-group classification
+       |
+       v
+Pivot Tables + Excel Formulas
+       |
+       v
+Interactive Dashboard
+       |
+       v
+Customer & Marketing Insights
+```
 
-1. **Missing Values Fill Sheet**  
-   Contains average age calculations by gender:  
-   - Female: 43.56 years  
-   - Male: 42.41 years  
-   - Other: 42.43 years  
-   - Grand Total: 42.97 years  
+## Dataset
 
-2. **Customers Sheet (336 Records)**  
-   Comprehensive customer database with fields:  
-   - Customer_ID: Unique identifier (C00001-C00336)  
-   - Customer_Name: Anonymous customer identifiers  
-   - Age_Old: Original age values (with missing data)  
-   - Age: Calculated field with missing values filled using gender-based averages  
-   - AgeGroup: Categorized into <25, 25-40, 40-60, 60+  
-   - Gender: Female, Male, Other  
-   - City: 8 major Indian cities (Bangalore, Chennai, Delhi, Hyderabad, Kolkata, Mumbai, Pune, and others)  
+The project uses a synthetic retail customer dataset containing **336 customer records** across major Indian cities.
 
-### Data Processing  
-- Missing Value Imputation: Used gender-based average age replacement  
-- Age Grouping: Automated categorization for demographic analysis  
-- Data Validation: Ensured consistency across customer records  
+Key fields include:
 
----
+| Field | Purpose |
+|---|---|
+| `Customer_ID` | Unique customer identifier |
+| `Customer_Name` | Anonymous customer label |
+| `Age_Old` | Original age value, including missing records |
+| `Age` | Cleaned/imputed age |
+| `AgeGroup` | `<25`, `25-40`, `40-60`, `60+` |
+| `Gender` | Female, Male, Other |
+| `City` | Customer location |
 
-## 📈 Dashboard Features  
+### Data-quality treatment
 
-### 🔍 Demographic Analysis  
-- Age Distribution: Visual breakdown across four age groups  
-- Gender Proportion: Pie chart showing customer gender distribution  
-- Age-Gender Combination: Heat maps showing intersection of demographics  
+Missing ages are handled using **gender-level average age**, with a fallback to the overall average where required. The resulting age field is then categorized into business-friendly age groups.
 
-### 🗺️ Geographic Insights  
-- City-wise Distribution: Customer concentration across 8 major cities  
-- Regional Patterns: Identification of high-density customer areas  
-- Geographic Coverage: Analysis of market penetration across regions  
+This makes the dashboard useful not only for visualization but also as an example of **data cleaning and feature engineering in Excel**.
 
-### 📊 Statistical Overview  
-- Key Metrics: Total customers, average age, gender ratios  
-- Missing Data Handling: Transparent reporting of imputed values  
-- Data Quality Indicators: Completeness metrics for each field  
+## Dashboard Components
 
----
+### 1. Executive Overview
 
-## 🛠️ Technical Implementation  
+Provides a quick view of:
 
-### Excel Features Utilized  
-- Advanced Formulas:  
-  - `IF(ISBLANK())` for missing value detection  
-  - `VLOOKUP()` for gender-based age imputation  
-  - Nested `IF()` statements for age group categorization  
-- Structured References: Table formulas for dynamic calculations  
-- Pivot Tables & Charts: For interactive data summarization  
-- Conditional Formatting: For visual data highlighting  
+- Total customers
+- Average customer age
+- Gender distribution
+- Demographic mix
 
-### Data Processing Logic  
-- Age Calculation:  
-  ```excel
-  =IF(ISBLANK([Age_Old]), 
-     IFERROR(VLOOKUP([Gender], gender_age_table, 2, FALSE),
-     ROUND(AVERAGE([Age_Old]), 0)),
-     [Age_Old])
-## 🎨 Visualization Components  
+### 2. Demographic Analysis
 
-### Current Dashboard Elements  
-1. Demographic Overview Cards  
-   - Total Customer Count  
-   - Average Age by Gender  
-   - Gender Distribution Percentage  
+Explores customer composition through:
 
-2. Charts & Graphs  
-   - Age Group Distribution Bar Chart  
-   - Gender Proportion Pie Chart  
-   - City-wise Customer Distribution  
-   - Age-Gender Combination Matrix  
+- Age-group distribution
+- Gender proportions
+- Age × gender analysis
+- Average age comparisons
 
-3. Regional Analysis  
-   - Geographic customer density  
-   - City performance metrics  
-   - Regional comparison charts  
+### 3. Geographic Analysis
 
----
+Highlights:
 
-## 🚀 Advanced Enhancement Opportunities  
+- Customer distribution by city
+- High-density customer markets
+- Regional concentration patterns
 
-### 🔮 Potential Advanced Features  
+### 4. Data Quality
 
-1. Predictive Analytics  
-   - Customer Lifetime Value Prediction using regression models  
-   - Churn Prediction based on demographic patterns  
-   - Purchase Probability scoring by age and location  
+Makes the transformation process transparent by showing how missing demographic values were handled.
 
-2. Interactive Features  
-   - Dynamic Filtering by city, age group, and gender  
-   - Drill-down Capability from summary to individual records  
-   - Real-time Data Updates with refresh capabilities  
+## Excel Techniques Used
 
-3. Advanced Visualizations  
-   - Geographic Heat Maps using mapping integrations  
-   - Time-series Analysis for customer acquisition trends  
-   - Cohort Analysis for customer behavior patterns  
+This project demonstrates practical Excel analytics skills:
 
-4. Business Intelligence Integration  
-   - Sales Correlation with demographic data  
-   - Customer Segmentation using clustering algorithms  
-   - RFM Analysis (Recency, Frequency, Monetary) integration  
+- `IF()` / `ISBLANK()` for missing-value handling
+- `VLOOKUP()` for gender-based imputation
+- `AVERAGE()` and `ROUND()` for statistical calculations
+- Nested `IF()` logic for age-group classification
+- Excel Tables and structured references
+- Pivot Tables
+- Pivot Charts
+- Conditional Formatting
+- Dashboard layout and KPI cards
 
-5. Technical Enhancements  
-   - Power BI Migration for enhanced visualization capabilities  
-   - Database Integration for live data feeds  
-   - Automated Reporting with scheduled refresh  
-   - Mobile-responsive Design for on-the-go access  
+### Example transformation logic
 
----
+```excel
+=IF(ISBLANK([@Age_Old]),
+   IFERROR(VLOOKUP([@Gender],gender_age_table,2,FALSE),
+   ROUND(AVERAGE([@Age_Old]),0)),
+   [@Age_Old])
+```
 
-## 📱 Additional Dashboard Tabs  
+## Business Insights
 
-1. Customer Segmentation Tab  
-   - Behavioral clustering  
-   - Value-based segmentation  
-   - Targeted campaign planning  
+The dashboard is designed to help retail stakeholders answer questions such as:
 
-2. Trend Analysis Tab  
-   - Seasonal patterns  
-   - Growth metrics  
-   - Comparative period analysis  
+- Which age groups form the largest customer base?
+- Is the customer base balanced across genders?
+- Which cities represent the strongest customer concentration?
+- Which demographic segments could be prioritized for targeted campaigns?
+- How much of the dataset required data-quality treatment?
 
-3. Forecasting Tab  
-   - Customer growth projections  
-   - Revenue forecasting  
-   - Market expansion planning  
+### Example business actions
 
----
+1. Prioritize marketing campaigns toward the largest customer segments.
+2. Compare city-level customer concentration when planning regional campaigns.
+3. Use age × gender combinations to create more focused customer segments.
+4. Monitor data completeness before using demographic fields for decision-making.
+5. Extend the analysis with purchase and revenue data before making value-based targeting decisions.
 
-## 📁 Project Structure  
+> **Important:** The current dataset is synthetic and demographic-focused. It should not be interpreted as evidence of actual customer behavior or revenue performance.
 
-retail-analytics-dashboard/
+## Project Structure
+
+```text
+Excel-Sales-Performance-and-Revenue-Insights-Dashboard/
 │
-├── retail_synthetic_dataset.xlsx
-│ ├── Missing Values Fill (Sheet)
-│ └── Customers (Sheet)
-│
-├── Retail_Dashboard.xlsx (Main Dashboard File)
-│ ├── Summary View
-│ ├── Demographic Analysis
-│ ├── Geographic Insights
-│ └── Raw Data
-│
-└── README.md (This file)
+├── retail_synthetic_dataset.xlsx   # Source synthetic customer data
+├── Retail_Dashboard.xlsx           # Main Excel dashboard
+├── README.md                       # Project documentation
+└── .gitignore                      # Local/temporary file exclusions
+```
+
+## How to Explore the Project
+
+1. Download or clone the repository.
+2. Open `Retail_Dashboard.xlsx` in Microsoft Excel.
+3. Start from the dashboard/summary sheet.
+4. Use the available filters and charts to explore customer segments.
+5. Review the underlying customer and data-quality sheets to understand the transformations.
+
+## Recommended Future Enhancements
+
+To evolve this project from demographic reporting into a stronger business-analytics portfolio project:
+
+- Add transaction-level sales and revenue data.
+- Introduce **RFM analysis** (Recency, Frequency, Monetary).
+- Calculate customer lifetime value.
+- Add cohort and retention analysis.
+- Build customer acquisition trends over time.
+- Add Power Query for repeatable ETL.
+- Rebuild the final model in Power BI with DAX measures and drill-through pages.
+- Add automated refresh and a KPI-driven executive summary.
+
+## Skills Demonstrated
+
+**Excel | Data Cleaning | Data Validation | Pivot Tables | Dashboard Design | KPI Reporting | Customer Analytics | Data Visualization | Business Insights**
+
+## Author
+
+**Anamika Yadav**  
+Data Analyst | Power BI | SQL | Python | Excel | Data Analytics
+
+[GitHub](https://github.com/anamikavyada)
